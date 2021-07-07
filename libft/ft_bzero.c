@@ -19,6 +19,6 @@ void	ft_bzero(void *dest, size_t len)
 	i = 0;
 	if (len == 0)
 		return ;
-	while (i < len)
+	while (i <= len)
 		((char *)dest)[i++] = 0;
 }

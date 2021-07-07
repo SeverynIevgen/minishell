@@ -15,12 +15,17 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <fcntl.h>
+# include <string.h>
+
+# define FD 1024
 
 typedef struct		s_list
 {
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+char				g_buf[2];
 
 int					ft_atoi(const char *str);
 int					ft_isalnum(int c);
@@ -29,6 +34,7 @@ int					ft_isascii(int c);
 int					ft_isdigit(int c);
 int					ft_isprint(int c);
 int					ft_memcmp(const void *src1, const void *src2, size_t len);
+int					ft_strcmp(const char *str1, const char *str2);
 int					ft_strncmp(const char *str1, const char *str2, size_t len);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
@@ -59,6 +65,7 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putendl_fd(const char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 void				ft_putstr_fd(const char *s, int fd);
+void				ft_free_null(void **el);
 
 t_list				*ft_lstlast(t_list *lst);
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
@@ -70,5 +77,8 @@ void				ft_lstclear(t_list **lst, void (*del)(void*));
 void				ft_lstdelone(t_list *lst, void (*del)(void*));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 int					ft_lstsize(t_list *lst);
+
+int					get_next_line(int fd, char **line);
+int					ft_get_next_line(int fd, char **line);
 
 #endif
